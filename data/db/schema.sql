@@ -10,7 +10,7 @@ CREATE TABLE categoria (
 
 CREATE UNIQUE INDEX categoria_idx
     ON categoria
-        ( nome );
+        ( categoria_nome );
 
 CREATE TABLE produto (
                          id INT AUTO_INCREMENT NOT NULL,
