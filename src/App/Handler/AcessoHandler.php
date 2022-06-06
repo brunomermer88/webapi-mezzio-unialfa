@@ -38,19 +38,15 @@ class AcessoHandler implements RequestHandlerInterface
             case 'GET':
                 $select = $sql->select('acesso');
                 $select->columns(['token']);
-
                 if (!empty($queryParams)) {
                     $select->where(['id' => $queryParams['id']]);
                 }
-
                 $stmt = $sql->prepareStatementForSqlObject($select);
                 $result = $stmt->execute();
-
                 while($record = $result->current()) {
                     $data[] = $record;
                     $result->next();
                 }
-
                 return new JsonResponse(['data' => $data], (count($data) > 0) ? 200 : 204);
             break;
 
@@ -58,10 +54,8 @@ class AcessoHandler implements RequestHandlerInterface
                 $body = json_decode($request->getBody()->getContents());
                 $insert = $sql->insert('acesso');
                 $insert->values(['token' => $body->token], $insert::VALUES_MERGE);
-
                 $stmt = $sql->prepareStatementForSqlObject($insert);
                 $stmt->execute();
-
                 return new EmptyResponse(201);
             break;
 
@@ -69,23 +63,20 @@ class AcessoHandler implements RequestHandlerInterface
                 $body = json_decode($request->getBody()->getContents());
                 $update = $sql->update('acesso');
                 $update->set(['token'=> $body->token]);
-
                 $update->where(['id' => $queryParams['id']]);
-
                 $stmt = $sql->prepareStatementForSqlObject($update);
                 $stmt->execute();
-
                 return new EmptyResponse(204);
-
             break;
 
             case 'DELETE':
+                if (empty($queryParams) or !isset($queryParams['id']) or empty($queryParams['id'])){
+                    return new EmptyResponse(400);
+                }
                 $delete = $sql->delete('acesso');
                 $delete->where(['id' => $queryParams['id']]);
-
                 $stmt = $sql->prepareStatementForSqlObject($delete);
                 $stmt->execute();
-
                 return new EmptyResponse(204);
             break;
         }

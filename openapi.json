@@ -1,0 +1,185 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+      "title": "Web api Unialfa",
+      "description": "Projeto criado e desenvolvido na disciplina de API com PHP Unialfa",
+      "version": "1.0.0"
+    },
+    "servers": [
+      {
+        "url": "http://localhost:8094",
+        "description": "Url para testes locais"
+      }
+    ],
+    "paths": {
+
+      "/acesso": {
+        "get": {
+          "tags": [
+            "ACESSO"
+          ],
+          "summary": "Realiza a busca de todos os dados de acesso",
+          "responses": {
+            "200": {
+              "description": "Resposta retornada com sucesso.",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "data":[
+                      {
+                        "token": "token"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "204": {
+              "description": "Resposta retornada com sucesso.",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "data":[]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "post": {
+          "tags": [
+            "ACESSO"
+          ],
+          "summary": "Cria o registro de um dado de acesso",
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Acesso"
+                }
+              }
+            }
+          },
+          "responses": {
+            "204": {
+              "description": "Resposta retornada com sucesso.",
+              "content": {
+                "application/json": {}
+              }
+            }
+          }
+        }
+      },
+      "/acesso?id=1": {
+        "get": {
+          "tags": [
+            "ACESSO"
+          ],
+          "summary": "Realiza a busca de um dado de acesso por id",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "example": 1
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Resposta retornada com sucesso.",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "data":[
+                      {
+                        "token": "token"
+                      }
+                    ]
+                  }
+                }
+              }
+            },
+            "204": {
+              "description": "Resposta retornada com sucesso.",
+              "content": {
+                "application/json": {
+                  "example": {
+                    "data":[]
+                  }
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "ACESSO"
+          ],
+          "summary": "Apaga um determinado dado de acesso",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "example": 1
+              }
+            }
+          ],
+          "responses": {
+            "204": {
+              "description": "Resposta retornada com sucesso.",
+              "content": {
+                "application/json": {}
+              }
+            },
+            "400": {
+              "description": "Falha ao processar requisição.",
+              "content": {
+                "application/json": {}
+              }
+            }
+          }
+        },
+        "patch": {
+          "tags": [
+            "ACESSO"
+          ],
+          "summary": "Atualiza um determinado dado de acesso",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "query",
+              "required": true,
+              "schema": {
+                "type": "integer",
+                "example": 1
+              }
+            }
+          ],
+          "requestBody": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Acesso"
+                }
+              }
+            }
+          },
+          "responses": {
+            "204": {
+              "description": "Resposta retornada com sucesso.",
+              "content": {
+                "application/json": {}
+              }
+            }
+          }
+        }
+      }
+        
+    }
+}
