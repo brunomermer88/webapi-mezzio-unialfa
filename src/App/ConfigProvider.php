@@ -6,6 +6,10 @@ namespace App;
 
 use App\Handler\AcessoHandler;
 use App\Handler\AcessoHandlerFactory;
+use App\Handler\CategoriaHandler;
+use App\Handler\CategoriaHandlerFactory;
+use App\Handler\ProdutoHandler;
+use App\Handler\ProdutoHandlerFactory;
 
 /**
  * The configuration provider for the App module
@@ -40,6 +44,8 @@ class ConfigProvider
             'factories'  => [
                 Handler\HomePageHandler::class => Handler\HomePageHandlerFactory::class,
                 AcessoHandler::class => AcessoHandlerFactory::class,
+                CategoriaHandler::class => CategoriaHandlerFactory::class,
+                ProdutoHandler::class => ProdutoHandlerFactory::class
             ],
         ];
     }
