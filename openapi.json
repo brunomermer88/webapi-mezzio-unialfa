@@ -1,185 +1,621 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-      "title": "Web api Unialfa",
-      "description": "Projeto criado e desenvolvido na disciplina de API com PHP Unialfa",
-      "version": "1.0.0"
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Web api Unialfa",
+    "description": "Projeto criado e desenvolvido na disciplina de API com PHP Unialfa",
+    "version": "1.0.0",
+    "license": {
+      "name": "Free!",
+      "url": ""
     },
-    "servers": [
+    "contact": {
+        "name": "Bruno Mermer",
+        "email": "bmermer@gmail.com",
+        "url": ""
+    }
+  },
+  "servers": [
       {
         "url": "http://localhost:8094",
-        "description": "Url para testes locais"
+        "description": "Dev"
       }
-    ],
-    "paths": {
+  ],
+  "tags": [
+    {"name": "acesso"},
+    {"name": "Categoria"},
+    {"name": "Produto"}
+  ],
+  "paths": {
 
-      "/acesso": {
-        "get": {
-          "tags": [
-            "ACESSO"
-          ],
-          "summary": "Realiza a busca de todos os dados de acesso",
-          "responses": {
-            "200": {
-              "description": "Resposta retornada com sucesso.",
-              "content": {
-                "application/json": {
-                  "example": {
-                    "data":[
-                      {
-                        "token": "token"
-                      }
-                    ]
-                  }
-                }
-              }
-            },
-            "204": {
-              "description": "Resposta retornada com sucesso.",
-              "content": {
-                "application/json": {
-                  "example": {
-                    "data":[]
-                  }
-                }
-              }
-            }
-          }
-        },
-        "post": {
-          "tags": [
-            "ACESSO"
-          ],
-          "summary": "Cria o registro de um dado de acesso",
-          "requestBody": {
+    "/acesso": {
+      "get": {
+        "tags": [
+          "acesso"
+        ],
+        "summary": "Realiza a busca de todos os dados de acesso",
+        "responses": {
+          "200": {
+            "description": "Resposta retornada com sucesso.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Acesso"
+                "example": {
+                  "data":[
+                    {
+                      "token": "token"
+                    }
+                  ]
                 }
               }
             }
           },
-          "responses": {
-            "204": {
-              "description": "Resposta retornada com sucesso.",
-              "content": {
-                "application/json": {}
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[]
+                }
               }
             }
           }
         }
       },
-      "/acesso?id=1": {
-        "get": {
-          "tags": [
-            "ACESSO"
-          ],
-          "summary": "Realiza a busca de um dado de acesso por id",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "query",
-              "required": true,
+      "post": {
+        "tags": [
+          "acesso"
+        ],
+        "summary": "Cria o registro de um dado de acesso",
+        "requestBody": {
+          "content": {
+            "application/json": {
               "schema": {
-                "type": "integer",
-                "example": 1
-              }
-            }
-          ],
-          "responses": {
-            "200": {
-              "description": "Resposta retornada com sucesso.",
-              "content": {
-                "application/json": {
-                  "example": {
-                    "data":[
-                      {
-                        "token": "token"
-                      }
-                    ]
-                  }
-                }
-              }
-            },
-            "204": {
-              "description": "Resposta retornada com sucesso.",
-              "content": {
-                "application/json": {
-                  "example": {
-                    "data":[]
-                  }
-                }
+                "$ref": "#/components/schemas/Acesso"
               }
             }
           }
         },
-        "delete": {
-          "tags": [
-            "ACESSO"
-          ],
-          "summary": "Apaga um determinado dado de acesso",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "query",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "example": 1
-              }
-            }
-          ],
-          "responses": {
-            "204": {
-              "description": "Resposta retornada com sucesso.",
-              "content": {
-                "application/json": {}
-              }
-            },
-            "400": {
-              "description": "Falha ao processar requisição.",
-              "content": {
-                "application/json": {}
-              }
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
             }
           }
-        },
-        "patch": {
-          "tags": [
-            "ACESSO"
-          ],
-          "summary": "Atualiza um determinado dado de acesso",
-          "parameters": [
-            {
-              "name": "id",
-              "in": "query",
-              "required": true,
-              "schema": {
-                "type": "integer",
-                "example": 1
-              }
+        }
+      }
+    },
+    "/acesso?id=1": {
+      "get": {
+        "tags": [
+          "acesso"
+        ],
+        "summary": "Realiza a busca de um dado de acesso por id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
             }
-          ],
-          "requestBody": {
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resposta retornada com sucesso.",
             "content": {
               "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Acesso"
+                "example": {
+                  "data":[
+                    {
+                      "token": "token"
+                    }
+                  ]
                 }
               }
             }
           },
-          "responses": {
-            "204": {
-              "description": "Resposta retornada com sucesso.",
-              "content": {
-                "application/json": {}
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "acesso"
+        ],
+        "summary": "Apaga um determinado dado de acesso",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Falha ao processar requisição.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "acesso"
+        ],
+        "summary": "Atualiza um determinado dado de acesso",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Acesso"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+
+    "/categoria": {
+      "get": {
+        "tags": [
+          "CATEGORIA"
+        ],
+        "summary": "Realiza a busca de todas as categorias",
+        "responses": {
+          "200": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[
+                    {
+                      "id": "1",
+                      "categoria_nome": "Equipamento"
+                    },
+                    {
+                      "id": "21",
+                      "categoria_nome": "Acessório"
+                    },
+                    {
+                      "id": "22",
+                      "categoria_nome": "Peça"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "CATEGORIA"
+        ],
+        "summary": "Cria o registro de uma categoria",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Categoria"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/categoria?id=1": {
+      "get": {
+        "tags": [
+          "CATEGORIA"
+        ],
+        "summary": "Realiza a busca de uma categoria por id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[
+                    {
+                      "id": "1",
+                      "categoria_nome": "Equipamento"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "CATEGORIA"
+        ],
+        "summary": "Apaga um determinado registro de categoria",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "CATEGORIA"
+        ],
+        "summary": "Atualiza um determinado registro de categoria",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Categoria"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+
+    "/produto": {
+      "get": {
+        "tags": [
+          "PRODUTO"
+        ],
+        "summary": "Realiza a busca de todos os produtos",
+        "responses": {
+          "200": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": [
+                    {
+                      "id": "1",
+                      "nome": "Equipamento 1",
+                      "preco": "100.00",
+                      "categoria_id": "1",
+                      "categoria_nome": "Equipamento"
+                    },
+                    {
+                      "id": "2",
+                      "nome": "Produto 2",
+                      "preco": "200.00",
+                      "categoria_id": "21",
+                      "categoria_nome": "Acessório"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[]
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "PRODUTO"
+        ],
+        "summary": "Cria o registro de um produto",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Produto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Não foi possível cadastrar o produto!",
+            "content": {
+              "application/json": {
+                "example": {
+                  "error": "Não foi possível cadastrar o produto!",
+                  "reason": "Não foi localizada nenhuma categoria com id 1"
+                }
               }
             }
           }
         }
       }
-        
+    },
+    "/produto?id=1": {
+      "get": {
+        "tags": [
+          "PRODUTO"
+        ],
+        "summary": "Realiza a busca de um produto por id",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data": [
+                    {
+                      "id": "1",
+                      "nome": "Equipamento 1",
+                      "preco": "100.00",
+                      "categoria_id": "1",
+                      "categoria_nome": "Equipamento"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {
+                "example": {
+                  "data":[]
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "PRODUTO"
+        ],
+        "summary": "Apaga um determinado produto",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "PRODUTO"
+        ],
+        "summary": "Atualiza um determinado produto",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "example": 1
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Produto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Resposta retornada com sucesso.",
+            "content": {
+              "application/json": {}
+            }
+          },
+          "400": {
+            "description": "Não foi possível atualizar o produto!",
+            "content": {
+              "application/json": {
+                "example": {
+                    "error": "Não foi possível atualizar o produto!",
+                    "reason": "Não foi localizada nenhuma categoria com id 1"
+                }
+              }
+            }
+          }
+        }
+      }
     }
+
+  },
+  "components": {
+    "schemas": {
+      "Acesso": {
+        "title": "Acesso",
+        "required": [
+          "token"
+        ],
+        "properties": {
+          "token": {
+            "type": "string",
+            "example": "token"
+          }
+        }
+      },
+      "Categoria": {
+        "title": "Categoria",
+        "required": [
+          "categoria_nome"
+        ],
+        "properties": {
+          "categoria_nome": {
+            "type": "string",
+            "example": "Equipamento"
+          }
+        }
+      },
+      "Produto": {
+        "title": "Produto",
+        "required": [
+          "categoria_id",
+          "nome",
+          "preco"
+        ],
+        "properties": {
+          "categoria_id": {
+            "type": "integer",
+            "example": 1
+          },
+          "nome": {
+            "type": "string",
+            "example": "Produto 2"
+          },
+          "preco": {
+            "type": "number",
+            "example": 200.00
+          }
+        }
+      }
+
+    }
+  }
 }
