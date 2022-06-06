@@ -12,6 +12,14 @@ Subindo o container:
 
 docker run -v ./:/var/www/ -p 8094:80 --rm --name nomecontainer imgapi
 
+Docker compose:
+
+docker-compose up -d --build
+
 Base url:
 
 http://localhost:8094
+
+Documentação API em HTML:
+
+/data/docapi/
