@@ -14,4 +14,4 @@ docker run -v ./:/var/www/ -p 8094:80 --rm --name nomecontainer imgapi
 
 Base url:
 
-http//localhost:8094
+http://localhost:8094
