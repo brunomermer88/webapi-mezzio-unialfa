@@ -41,10 +41,5 @@ return static function (Application $app, MiddlewareFactory $factory, ContainerI
     $app->get('/', App\Handler\HomePageHandler::class, 'home');
     $app->get('/api/ping', App\Handler\PingHandler::class, 'api.ping');
 
-    $app->route('/v1/acesso',
-        AcessoHandler::class, [
-        'GET', 'POST', 'PATCH', 'DELETE'
-        ]
-    );
-
+    $app->route('/acesso', App\Handler\AcessoHandler::class, ['GET', 'POST', 'PATCH', 'DELETE']);
 };
